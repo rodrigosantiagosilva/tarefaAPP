@@ -1,31 +1,28 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
+    <ion-header>
       <ion-toolbar>
-        <ion-title>Eventos</ion-title>
+        <ion-title>Favoritos</ion-title>
       </ion-toolbar>
     </ion-header>
 
-    <ion-content :fullscreen="true">
+    <ion-content>
 
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Eventos</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
+      <!-- lista de favoritos -->
       <EventoCard
-        v-for="evento in eventos"
+        v-for="evento in favoritos"
         :key="evento.id"
         :evento="evento"
         @favoritar="Favoritar"
       />
 
+      <!-- mensagem se não tiver nenhum -->
+      <p v-if="!favoritos.length" class="ion-text-center">
+        Nenhum evento favoritado
+      </p>
+
       <div class="flex limite">
         <ion-button @click="voltar">Voltar</ion-button>
-      </div>
-      <div class="flex limite">
-        <ion-button @click="aosfavoritos">Veja Seus favoritos</ion-button>
       </div>
 
     </ion-content>
@@ -43,18 +40,20 @@ import {
   useIonRouter
 } from '@ionic/vue'
 
+import { computed } from 'vue'
 import EventoCard from '../components/EventoCard.vue'
 import { useFavorito } from '../composable/useFavorito'
 
 const { eventos, Favoritar } = useFavorito()
+
+// 🔥 FILTRO PRINCIPAL
+const favoritos = computed(() => {
+  return eventos.value.filter(e => e.favorito === 'yes')
+})
 
 const router = useIonRouter()
 
 const voltar = () => {
   router.push('/home')
 }
-const aosfavoritos = () => {
-  router.push('/eventosfavoritos')
-}
-
 </script>
