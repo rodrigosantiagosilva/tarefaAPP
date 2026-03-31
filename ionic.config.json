@@ -1,0 +1,7 @@
+{
+  "name": "tarefaAPP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
