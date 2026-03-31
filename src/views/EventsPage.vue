@@ -2,32 +2,33 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>SmartEvent</ion-title>
+        <ion-title>Eventos</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">SmartEvent</ion-title>
+          <ion-title size="large">Eventos</ion-title>
         </ion-toolbar>
       </ion-header>
-            <div class="flex limite">
-        <ion-button class="flexCenter" @click =irEventos()>Confira os Eventos</ion-button>
-      </div>
 
+            <div class="flex limite">
+        <ion-button class="flexCenter" @click =Voltar()>Voltar</ion-button>
+      </div>
 
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,IonButton, useIonRouter } from '@ionic/vue';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,useIonRouter } from '@ionic/vue';
 
 const router = useIonRouter();
-const irEventos = () => {
-  router.push("/eventos");
+const Voltar = () => {
+  router.push("/home");
 };
+
 
 </script>
 
