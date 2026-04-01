@@ -1,68 +1,66 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
+    <ion-header>
       <ion-toolbar>
-        <ion-title>SmartEvent</ion-title>
+        <ion-title>Perfil</ion-title>
       </ion-toolbar>
     </ion-header>
 
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">SmartEvent</ion-title>
-        </ion-toolbar>
-      </ion-header>
-            <div class="flex limite">
-        <ion-button class="flexCenter" @click =irEventos()>Confira os Eventos</ion-button>
-      </div>
-            <div class="flex limite">
-        <ion-button class="flexCenter" @click =voltar()>Voltar</ion-button>
-      </div>
+    <ion-content class="ion-padding">
 
+      <div v-if="!editando">
+        <ion-item>
+          <ion-label><strong>Nome:</strong>{{ name }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Email:</strong>{{ email }}</ion-label>
+        </ion-item>
+        <ion-button expand="block" @click="editar">
+          Mudar Perfil
+        </ion-button>
+      </div>
+      <div v-else>
+        <ion-item>
+          <ion-label position="stacked">Nome</ion-label>
+          <ion-input v-model="name"/>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input v-model="email" />
+        </ion-item>
+        <ion-button expand="block" @click="salvar">
+          Salvar
+        </ion-button>
+        <ion-button expand="block" color="medium" @click="cancelar">
+          Cancelar
+        </ion-button>
+      </div>
 
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,IonButton, useIonRouter } from '@ionic/vue';
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonButton
+} from '@ionic/vue'
 
-const router = useIonRouter();
-const irEventos = () => {
-  router.push("/eventos");
-};
-const voltar = () => {
-  router.push("/home");
-};
+import { usePerfil } from '@/composable/usePerfil'
 
+const {
+  name,
+  email,
+  editando,
+  editar,
+  salvar,
+  cancelar
+} = usePerfil()
 </script>
-
-<style scoped>
-#container {
-  text-align: center;
-  
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  
-  color: #8c8c8c;
-  
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-</style>
