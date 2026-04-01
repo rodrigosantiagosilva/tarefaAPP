@@ -16,7 +16,7 @@
         <ion-button class="flexCenter" @click =irEventos()>Confira os Eventos</ion-button>
       </div>
             <div class="flex limite">
-        <ion-button class="flexCenter" @click =irPerfil()>Ir Para Seu Perfil</ion-button>
+        <ion-button class="flexCenter" @click =voltar()>Voltar</ion-button>
       </div>
 
 
@@ -31,8 +31,8 @@ const router = useIonRouter();
 const irEventos = () => {
   router.push("/eventos");
 };
-const irPerfil = () => {
-  router.push("/perfil");
+const voltar = () => {
+  router.push("/home");
 };
 
 </script>
