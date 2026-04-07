@@ -20,12 +20,12 @@
         :evento="evento"
         @favoritar="Favoritar"
       />
-
-      <div class="flex limite">
-        <ion-button @click="voltar">Voltar</ion-button>
-      </div>
       <div class="flex limite">
         <ion-button @click="aosfavoritos">Veja Seus favoritos</ion-button>
+      </div>
+      
+      <div class="flex limite">
+        <ion-button @click="voltar">Voltar</ion-button>
       </div>
 
     </ion-content>

@@ -35,7 +35,9 @@
           Cancelar
         </ion-button>
       </div>
-
+      <div class="flex limite">
+        <ion-button @click="voltar">Voltar</ion-button>
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -50,11 +52,14 @@ import {
   IonItem,
   IonLabel,
   IonInput,
-  IonButton
+  IonButton, useIonRouter
 } from '@ionic/vue'
 
 import { usePerfil } from '@/composable/usePerfil'
-
+const router = useIonRouter();
+const voltar = () => {
+  router.push('/home')
+}
 const {
   name,
   email,
@@ -63,4 +68,5 @@ const {
   salvar,
   cancelar
 } = usePerfil()
+
 </script>

@@ -1,4 +1,4 @@
-import {ref, watch} from 'vue'
+import {ref} from 'vue'
 
 const name = ref('Usuário')
 const email = ref('email@email.com')
@@ -13,10 +13,12 @@ function editar(){
 
 function salvar() {
     editando.value = false
+   
 }
-    watch([name,email] , ([novoName, novoEmail]) =>{
-    alert(`Dados atualizados:\nNome: ${novoName}\nEmail: ${novoEmail}`)
-})
+
+
+
+
 function cancelar() {
     editando.value = false
 }
