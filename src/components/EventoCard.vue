@@ -1,5 +1,5 @@
 <template>
-  <ion-card>
+  <ion-card @click="$emit('irParaDetalhe',evento.id)">
 
     <!-- clique no card -->
     <ion-card-header>
@@ -37,6 +37,7 @@ import {
   IonIcon
 } from '@ionic/vue'
 import {star} from "ionicons/icons";
+
 defineProps<{
   evento: {
     id: number
@@ -46,5 +47,5 @@ defineProps<{
   }
 }>()
 
-defineEmits(['Favoritar'])
+defineEmits(['Favoritar','irParaDetalhe'])
 </script>

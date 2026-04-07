@@ -19,6 +19,7 @@
         :key="evento.id"
         :evento="evento"
         @favoritar="Favoritar"
+        @irParaDetalhe ="irParaDetalhe"
       />
       <div class="flex limite">
         <ion-button @click="aosfavoritos">Veja Seus favoritos</ion-button>
@@ -44,9 +45,9 @@ import {
 } from '@ionic/vue'
 
 import EventoCard from '../components/EventoCard.vue'
-import { useFavorito } from '../composable/useFavorito'
+import { useEvents } from '../composable/useEvents'
 
-const { eventos, Favoritar } = useFavorito()
+const { eventos, Favoritar, irParaDetalhe } = useEvents()
 
 const router = useIonRouter()
 

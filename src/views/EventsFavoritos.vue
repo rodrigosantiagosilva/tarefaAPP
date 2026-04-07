@@ -13,6 +13,7 @@
         :key="evento.id"
         :evento="evento"
         @favoritar="Favoritar"
+        @irParaDetalhe ="irParaDetalhe"
       />
 
       <p v-if="!favoritos.length" class="ion-text-center">
@@ -40,9 +41,9 @@ import {
 
 import { computed } from 'vue'
 import EventoCard from '../components/EventoCard.vue'
-import { useFavorito } from '../composable/useFavorito'
+import { useEvents } from '../composable/useEvents'
 
-const { eventos, Favoritar } = useFavorito()
+const { eventos, Favoritar, irParaDetalhe } = useEvents()
 
 const favoritos = computed(() => {
   return eventos.value.filter(e => e.favorito === 'yes')
